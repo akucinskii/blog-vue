@@ -1,7 +1,6 @@
 from fastapi import FastAPI, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi_pagination import Page, add_pagination, paginate
-
+from fastapi_pagination import add_pagination
 from api import database
 from api.endpoints.categories import router as categories_router
 from api.endpoints.posts import router as posts_router
