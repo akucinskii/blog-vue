@@ -1,0 +1,35 @@
+image: node:latest
+
+stages:
+  - ui:build
+  - ui:test
+  - ui:lint
+
+ui:build:
+  stage: ui:build
+  script:
+    - cd ui
+    - npm ci
+    - make build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+ui:test:
+  stage: ui:test
+  script:
+    - cd ui
+    - npm ci
+    - make test
+  coverage: '/Statements\s+:\s(\d+.?\d+)%/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: ui/coverage/cobertura-coverage.xml
+ui:lint:
+  stage: ui:lint
+  script:
+    - cd ui
+    - npm ci
+    - make lint

@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NoPermission matches snapshot 1`] = `
+<v-main>
+  <v-container>
+    <v-row
+      align="center"
+      class="h-100"
+      justify="center"
+      no-gutters=""
+    >
+      <v-col>
+        <v-spacer />
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <h1
+            class="text-center py-8"
+          >
+            You need to be admin to see this page
+          </h1>
+        </v-row>
+        <v-row
+          align="center"
+          justify="center"
+        >
+          <v-btn
+            id="returnButton"
+          >
+            Return to home page
+          </v-btn>
+        </v-row>
+        <v-spacer />
+      </v-col>
+    </v-row>
+  </v-container>
+</v-main>
+`;

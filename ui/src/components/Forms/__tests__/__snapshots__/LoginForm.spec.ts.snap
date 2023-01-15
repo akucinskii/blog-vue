@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm Matches snapshot 1`] = `
+<v-sheet
+  class="pa-8"
+  elevation="23"
+  rounded="lg"
+>
+  <v-row
+    class="my-4"
+    justify="center"
+  >
+    <router-link
+      to="/"
+    >
+      Dieta by Robercik
+    </router-link>
+  </v-row>
+  <!--v-if-->
+  <v-form>
+    <v-text-field
+      autofocus=""
+      id="usernameInput"
+      label="username"
+      modelvalue=""
+      prepend-outer-icon="mdi-account"
+      required=""
+      type="username"
+      variant="underlined"
+    />
+    <v-text-field
+      id="passwordInput"
+      label="Password"
+      modelvalue=""
+      prepend-outer-icon="mdi-lock"
+      required=""
+      type="password"
+      variant="underlined"
+    />
+    <v-row
+      class="mb-4"
+      justify="center"
+    >
+      <v-btn
+        class="text--white px-8"
+        color="red"
+        id="submitButton"
+        type="submit"
+      >
+        Login
+      </v-btn>
+    </v-row>
+    <v-row
+      justify="center"
+    >
+      <router-link
+        to="/register"
+      >
+        <v-btn
+          class="text--gray"
+          variant="text"
+        >
+           Register 
+        </v-btn>
+      </router-link>
+    </v-row>
+  </v-form>
+</v-sheet>
+`;

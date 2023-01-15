@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`message component should match snapshot 1`] = `
+<v-row
+  class="my-4"
+>
+  <v-alert
+    close=""
+    color="success"
+    icon="mdi-alert-circle-outline"
+    id="message"
+    my="2"
+    text-color="white"
+    type="success"
+  >
+    
+  </v-alert>
+</v-row>
+`;

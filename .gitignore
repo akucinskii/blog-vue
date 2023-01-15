@@ -1,0 +1,6 @@
+.vscode/
+blog_database.db
+local/
+.venv/
+.env
+alembic/versions/__pycache__/

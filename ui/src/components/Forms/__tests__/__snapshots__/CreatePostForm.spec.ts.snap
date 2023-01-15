@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createPostForm matches snapshot 1`] = `
+<v-sheet
+  class="pa-8"
+  elevation="3"
+  rounded="lg"
+>
+  <v-row
+    cols="12"
+  >
+    <v-col>
+      <v-row
+        class="my-4"
+        justify="center"
+      >
+        <h3>
+          Add a post
+        </h3>
+      </v-row>
+      <!--v-if-->
+      <v-form>
+        <v-text-field
+          autofocus=""
+          id="titleInput"
+          label="Title"
+          modelvalue=""
+          type="text"
+          variant="underlined"
+        />
+        <v-textarea
+          id="descriptionInput"
+          label="description"
+          modelvalue=""
+          variant="underlined"
+        />
+        <v-text-field
+          id="image_urlInput"
+          label="image_url"
+          modelvalue=""
+          variant="underlined"
+        />
+        <v-select
+          id="categorySelect"
+          item-title="name"
+          item-value="id"
+          items=""
+          label="category"
+          modelvalue=""
+          variant="underlined"
+        />
+        <v-row
+          class="mb-4"
+          justify="center"
+        >
+          <v-btn
+            class="text--white px-8"
+            color="red"
+            id="submitButton"
+            type="submit"
+          >
+            Submit
+          </v-btn>
+        </v-row>
+      </v-form>
+    </v-col>
+  </v-row>
+</v-sheet>
+`;

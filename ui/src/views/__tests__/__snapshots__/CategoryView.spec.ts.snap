@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category page Should match snapshot 1`] = `
+<v-main
+  class="mt-8"
+>
+  <v-col
+    class="text-center"
+    id="categoryTitle"
+  >
+    <h1>
+      Posts in 
+    </h1>
+  </v-col>
+  <v-col
+    class="text-center"
+  >
+    <h3>
+      No posts found in this category :(
+    </h3>
+  </v-col>
+</v-main>
+`;

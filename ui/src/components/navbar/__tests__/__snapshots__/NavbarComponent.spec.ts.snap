@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavbarComponent It should match Snapshot 1`] = `
+<div
+  data-v-app=""
+>
+  
+  <v-app-bar
+    id="mobile"
+  >
+    <v-app-bar-nav-icon
+      id="hamburgerMenu"
+      variant="text"
+    />
+    <v-spacer />
+    <router-link
+      to="/"
+    >
+      Dieta by Robercik
+    </router-link>
+    <v-spacer />
+    <div
+      class="social-media__container"
+    >
+      <a
+        href="https://facebook.com/rl9official"
+        target="_blank"
+      >
+        <button>
+          <v-icon>
+            mdi-facebook
+          </v-icon>
+        </button>
+      </a>
+      <a
+        href="https://www.youtube.com/channel/UCZXD4PIYIwC48tkTsdGAKYw"
+        target="_blank"
+      >
+        <button>
+          <v-icon>
+            mdi-youtube
+          </v-icon>
+        </button>
+      </a>
+      <a
+        href="https://www.instagram.com/_rl9"
+        target="_blank"
+      >
+        <button>
+          <v-icon>
+            mdi-instagram
+          </v-icon>
+        </button>
+      </a>
+    </div>
+  </v-app-bar>
+  <v-navigation-drawer
+    bottom=""
+    class="py-4 m-0 text-center"
+    modelvalue="false"
+    temporary=""
+  >
+    <v-list
+      class="d-flex align-center flex-column"
+    >
+      
+      
+      <v-list-item>
+        <router-link
+          to="/login"
+        >
+          <v-btn
+            class="mx-2"
+            color="red"
+            variant="tonal"
+          >
+             Login 
+          </v-btn>
+        </router-link>
+      </v-list-item>
+      <v-list-item>
+        <router-link
+          to="/register"
+        >
+          <v-btn
+            variant="plain"
+          >
+             Register 
+          </v-btn>
+        </router-link>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
+  
+</div>
+`;
