@@ -12,10 +12,17 @@ export enum HTTP_METHODS {
 
 axios.defaults.baseURL = process.env.API_URL;
 
-const apiRequest = async (method: HTTP_METHODS, url: string, data = {}, headers = {}) => {
+const apiRequest = async (
+  method: HTTP_METHODS,
+  url: string,
+  data = {},
+  headers = {}
+) => {
   const token = localStorage.getItem("token");
 
   axios.defaults.headers.common["Authorization"] = "Bearer " + token;
+
+  const new_url = url[0] == "/" ? url.substring(1) : url;
 
   const response = await axios({
     method,
