@@ -1,10 +1,12 @@
 import uuid
-from sqlalchemy import Column, String, Boolean, DateTime, ForeignKey
-from sqlalchemy.sql import func
-from sqlalchemy.orm import relationship
+
+from sqlalchemy import Boolean, Column, DateTime, ForeignKey, String
 from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
+from sqlalchemy.sql import func
 
 from api import database
+
 
 class BaseDatabaseModel(database.Base):
     __abstract__ = True
@@ -13,6 +15,7 @@ class BaseDatabaseModel(database.Base):
     date_of_creation = Column(DateTime(timezone=True), server_default=func.now())
     date_of_last_edit = Column(DateTime(timezone=True), onupdate=func.now())
     disabled = Column(Boolean)
+
 
 class Post(BaseDatabaseModel):
     __tablename__ = "posts"
@@ -28,9 +31,10 @@ class Post(BaseDatabaseModel):
     category = relationship("Category")
     comments = relationship("Comment")
 
+
 class User(BaseDatabaseModel):
     __tablename__ = "users"
-   
+
     username = Column(String, unique=True)
     name = Column(String)
     surname = Column(String)
@@ -42,10 +46,12 @@ class User(BaseDatabaseModel):
     posts = relationship("Post", back_populates="author")
     comments = relationship("Comment", back_populates="author")
 
+
 class Category(BaseDatabaseModel):
     __tablename__ = "categories"
 
     name = Column(String)
+
 
 class Comment(BaseDatabaseModel):
     __tablename__ = "comments"

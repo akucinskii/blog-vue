@@ -1,14 +1,19 @@
-from pydantic import BaseModel
 from datetime import date
 from uuid import UUID
+
+from pydantic import BaseModel
+
 
 class CategoryBase(BaseModel):
     class Config:
         orm_mode = True
+
     name: str
+
 
 class CategoryCreate(CategoryBase):
     pass
+
 
 class Category(CategoryBase):
     id: UUID
