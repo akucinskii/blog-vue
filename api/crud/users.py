@@ -31,7 +31,7 @@ def get_user_by_id(db: Session, user_id: UUID):
 
 def create_user(db: Session, user: schemas_users.UserCreate):
     hashed_password = crud_auth.get_password_hash(user.password)
-    if get_user_by_username(db=db, username=user.username):
+    if not get_user_by_username(db=db, username=user.username):
         db_user = models.User(
             **user.dict(exclude={"password", "date_of_creation", "date_of_last_edit"}),
             password=hashed_password
