@@ -33,6 +33,6 @@ async def remove_category(db: Session, user: models.User, category_id: UUID):
     if user.is_admin:
         db_category = get_category_by_id(db=db, category_id=category_id)
         db.delete(db_category)
-        await db.commit()
+        db.commit()
     else:
         raise crud_auth.privlige_exception

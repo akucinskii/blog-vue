@@ -50,6 +50,6 @@ async def remove_user(db: Session, user: models.User, user_id: UUID):
     if user.is_admin or user_id == user.id:
         db_user = get_user_by_id(db=db, user_id=user_id)
         db.delete(db_user)
-        await db.commit()
+        db.commit()
     else:
         raise crud_auth.privlige_exception
