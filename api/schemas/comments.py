@@ -1,7 +1,5 @@
-from datetime import date
-from typing import Optional
 from uuid import UUID
-
+from datetime import date
 from pydantic import BaseModel
 
 from api.schemas import users as schemas_users
@@ -22,11 +20,10 @@ class Comment(CommentBase):
     id: UUID
     user_id: UUID
     post_id: UUID
-    disabled: Optional[bool] = False
-    date_of_creation: Optional[date]
-    date_of_last_edit: Optional[date]
+    disabled: bool = False
+    date_of_creation: date
+    date_of_last_edit: date
 
 
-class CommentUnderPost(Comment):
-    disabled: Optional[bool] = False
+class CommentUnderPost(CommentBase):
     author: schemas_users.UserPostDisplay

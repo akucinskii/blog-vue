@@ -1,7 +1,5 @@
-from datetime import date
-from typing import Optional
 from uuid import UUID
-
+from datetime import date
 from pydantic import BaseModel
 
 
@@ -10,7 +8,6 @@ class CategoryBase(BaseModel):
         orm_mode = True
 
     name: str
-    disabled: Optional[bool] = False
 
 
 class CategoryCreate(CategoryBase):
@@ -19,6 +16,10 @@ class CategoryCreate(CategoryBase):
 
 class Category(CategoryBase):
     id: UUID
+    disabled: bool = False
+    date_of_creation: date
+    date_of_last_edit: date
 
-    date_of_creation: Optional[date]
-    date_of_last_edit: Optional[date]
+
+class CategoryDisplay(CategoryBase):
+    id: UUID

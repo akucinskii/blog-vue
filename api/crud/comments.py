@@ -1,9 +1,9 @@
 from uuid import UUID
-
 from sqlalchemy.orm import Session
 
 from api import models
 from api.schemas import comments as schemas_comments
+from crud import posts as crud_posts
 
 
 def get_comments(db: Session, skip: int = 0, limit: int = 100):
@@ -11,7 +11,7 @@ def get_comments(db: Session, skip: int = 0, limit: int = 100):
 
 
 def get_comment_by_id(db: Session, comment_id: UUID):
-    return db.query(models.Comment).filter(models.Comment.id == comment_id)
+    return db.query(models.Comment).filter(models.Comment.id == comment_id).first()
 
 
 def create_comment(
@@ -20,6 +20,7 @@ def create_comment(
     user: models.User,
     post_id: UUID,
 ):
+    crud_posts.get_post_by_id(db=db, post_id=post_id)
     db_comment = models.Comment(**comment.dict(), user_id=user.id, post_id=post_id)
     db.add(db_comment)
     db.commit()
@@ -27,7 +28,7 @@ def create_comment(
     return db_comment
 
 
-async def remove_comment(db: Session, comment_id: UUID):
+def remove_comment(db: Session, comment_id: UUID):
     db_comment = get_comment_by_id(db=db, comment_id=comment_id)
     db.delete(db_comment)
     db.commit()

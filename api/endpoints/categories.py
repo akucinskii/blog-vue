@@ -1,14 +1,13 @@
 from uuid import UUID
-
-from fastapi import APIRouter, Depends
-from fastapi_pagination import Page, paginate
 from sqlalchemy.orm import Session
 
+from fastapi import Depends, APIRouter
+from fastapi_pagination import Page, paginate
+
 from api import models
-from api.crud import auth as crud_auth
-from api.crud import categories as crud_categories
-from api.database import get_db
 from api.schemas import categories as schemas_categories
+from api.crud import categories as crud_categories, auth as crud_auth
+from api.database import get_db
 
 router = APIRouter()
 
@@ -28,9 +27,9 @@ def create_category(
 
 
 @router.delete("")
-async def remove_category(
+def remove_category(
     category_id: UUID,
     db: Session = Depends(get_db),
     user: models.User = Depends(crud_auth.get_current_active_user),
 ):
-    return await crud_categories.remove_category(db=db, category_id=category_id, user=user)
+    return crud_categories.remove_category(db=db, category_id=category_id, user=user)

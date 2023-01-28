@@ -1,27 +1,24 @@
-from typing import Optional
+from cgitb import text
 from uuid import UUID
-
-from fastapi import APIRouter, Depends
-from fastapi_pagination import Page, paginate
+from typing import Optional
 from sqlalchemy.orm import Session
 
+from fastapi import Depends, APIRouter
+from fastapi_pagination import Page, paginate
+
 from api import models
-from api.crud import auth as crud_auth
-from api.crud import comments as crud_comments
-from api.crud import posts as crud_posts
+from api.schemas import posts as schemas_posts, comments as schemas_comments
+from api.crud import posts as crud_posts, comments as crud_comments, auth as crud_auth
 from api.database import get_db
-from api.schemas import comments as schemas_comments
-from api.schemas import posts as schemas_posts
 
 router = APIRouter()
 
 
 @router.get("", response_model=Page[schemas_posts.PostsShow])
-def read_posts(category: Optional[UUID] = None, db: Session = Depends(get_db)):
-    if category == None:
+def read_posts(category: Optional[str] = None, db: Session = Depends(get_db)):
+    if not category:
         return paginate(crud_posts.get_posts(db=db))
-    else:
-        return paginate(crud_posts.get_posts_by_category(category=category, db=db))
+    return paginate(crud_posts.get_posts_by_category(db=db, category_id=category))
 
 
 @router.post("", response_model=schemas_posts.PostCreate)
@@ -31,6 +28,21 @@ def create_post(
     user: models.User = Depends(crud_auth.get_current_active_user),
 ):
     return crud_posts.create_post(post=post, db=db, user=user)
+
+
+@router.patch("/update")
+def update_post(
+    post_to_change_id: UUID,
+    data_to_change: schemas_posts.PostEdit,
+    db: Session = Depends(get_db),
+    user: models.User = Depends(crud_auth.get_current_active_user),
+):
+    return crud_posts.update_post(
+        db=db,
+        post_to_change_id=post_to_change_id,
+        data_to_change=data_to_change,
+        user=user,
+    )
 
 
 @router.get("/{post_id}", response_model=schemas_posts.PostShow)
@@ -61,4 +73,4 @@ def create_comment(
 
 @router.get("/comments", response_model=Page[schemas_comments.CommentUnderPost])
 def read_comments(db: Session = Depends(get_db)):
-    return crud_comments.get_comments(db=db)
+    return paginate(crud_comments.get_comments(db=db))

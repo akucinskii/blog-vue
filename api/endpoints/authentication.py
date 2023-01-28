@@ -1,13 +1,13 @@
 from datetime import timedelta
+from sqlalchemy.orm import Session
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
-from sqlalchemy.orm import Session
 
 from api import models
+from api.schemas import tokens as schemas_tokens
 from api.crud import auth as crud_auth
 from api.database import get_db
-from api.schemas import tokens as schemas_tokens
 
 router = APIRouter()
 
@@ -27,7 +27,8 @@ async def login_for_access_token(
         )
     access_token_expires = timedelta(minutes=crud_auth.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = crud_auth.create_access_token(
-        data={"sub": user.username}, expires_delta=access_token_expires
+        data={"sub": user.username},
+        expires_delta=access_token_expires,
     )
     return {"access_token": access_token, "token_type": "bearer"}
 

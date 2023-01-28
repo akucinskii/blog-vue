@@ -1,15 +1,15 @@
+from jose import JWTError, jwt
 from datetime import datetime, timedelta
+from sqlalchemy.orm import Session
+from passlib.context import CryptContext
 
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from jose import JWTError, jwt
-from passlib.context import CryptContext
-from sqlalchemy.orm import Session
 
 from api import models
-from api.crud import users as crud_users
 from api.database import get_db
 from api.schemas import tokens as schemas_tokens
+from api.crud import users as crud_users
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -18,11 +18,7 @@ SECRET_KEY = "ea6e3a7f19faafa7d311a300e3c88c84c48fc73b82e35b868af30bbc06450a35"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
-privlige_exception = HTTPException(
-    status_code=status.HTTP_401_UNAUTHORIZED,
-    detail="User is not admin",
-    headers={"WWW-Authenticate": "Bearer"},
-)
+
 
 
 def verify_password(plain_password, hashed_password):
@@ -37,7 +33,6 @@ def authenticate_user(db: Session, username: str, password: str):
     user = crud_users.get_user_schema_by_username(db=db, username=username)
     if not user:
         return False
-    print(password, user.password)
     if not verify_password(password, user.password):
         return False
     return user
