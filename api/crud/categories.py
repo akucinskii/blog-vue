@@ -1,7 +1,6 @@
 from uuid import UUID
 
 from sqlalchemy.orm import Session
-from datetime import date
 from api import models
 from api.crud import auth as crud_auth
 from api.schemas import categories as schemas_categories
@@ -20,7 +19,7 @@ def create_category(
 ):
     if user.is_admin:
         db_category = models.Category(
-            name=category.name, disabled=False, date_of_last_edit=date
+            name=category.name, disabled=False
         )
         db.add(db_category)
         db.commit()
