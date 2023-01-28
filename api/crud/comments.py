@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from api import models
 from api.schemas import comments as schemas_comments
-from crud import posts as crud_posts
+from api.crud import posts as crud_posts
 
 
 def get_comments(db: Session, skip: int = 0, limit: int = 100):
