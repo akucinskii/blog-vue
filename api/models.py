@@ -14,7 +14,7 @@ class BaseDatabaseModel(database.Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     date_of_creation = Column(DateTime(timezone=True), server_default=func.now())
     date_of_last_edit = Column(DateTime(timezone=True), onupdate=func.now())
-    disabled = Column(Boolean)
+    disabled = Column(Boolean, default=False)
 
 
 class Post(BaseDatabaseModel):
