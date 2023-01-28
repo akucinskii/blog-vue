@@ -41,7 +41,7 @@ class UserPostDisplay(UserBase):
     class Config:
         orm_mode = True
         id: UUID
-
+    disabled: Optional[bool] = False
     description: str
 
 
@@ -50,6 +50,7 @@ class UserDisplay(UserBase):
         orm_mode = True
 
     id: UUID
+    disabled: Optional[bool] = False
     description: str
 
 

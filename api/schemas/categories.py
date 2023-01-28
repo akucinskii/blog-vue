@@ -10,6 +10,7 @@ class CategoryBase(BaseModel):
         orm_mode = True
 
     name: str
+    disabled: Optional[bool] = False
 
 
 class CategoryCreate(CategoryBase):
@@ -18,6 +19,6 @@ class CategoryCreate(CategoryBase):
 
 class Category(CategoryBase):
     id: UUID
-    disabled: Optional[bool] = False
+
     date_of_creation: Optional[date]
     date_of_last_edit: Optional[date]

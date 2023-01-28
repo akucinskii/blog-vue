@@ -38,6 +38,7 @@ class PostsShow(PostBase):
 
 class UserPosts(PostBase):
     id: UUID
+    disabled: Optional[bool] = False
     date: Optional[date]
     category: schemas_categories.CategoryBase
 

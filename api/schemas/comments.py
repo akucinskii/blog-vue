@@ -28,4 +28,5 @@ class Comment(CommentBase):
 
 
 class CommentUnderPost(CommentBase):
+    disabled: Optional[bool] = False
     author: schemas_users.UserPostDisplay
