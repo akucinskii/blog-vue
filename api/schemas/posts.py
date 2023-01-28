@@ -21,6 +21,7 @@ class PostBase(BaseModel):
 
 class PostShow(PostBase):
     id: UUID
+    disabled: Optional[bool] = False
     date: Optional[date]
     author: schemas_users.UserPostDisplay
     category: schemas_categories.CategoryBase
@@ -29,6 +30,7 @@ class PostShow(PostBase):
 
 class PostsShow(PostBase):
     id: UUID
+    disabled: Optional[bool] = False
     date: Optional[date]
     author: schemas_users.UserPostDisplay
     category: schemas_categories.CategoryBase
