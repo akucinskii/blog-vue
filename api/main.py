@@ -8,6 +8,8 @@ from api.endpoints.categories import router as categories_router
 from api.endpoints.posts import router as posts_router
 from api.endpoints.users import router as users_router
 
+# Work my boii
+
 database.Base.metadata.create_all(bind=database.engine)
 
 app = FastAPI()
