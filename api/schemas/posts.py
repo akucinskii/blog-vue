@@ -24,7 +24,7 @@ class PostShow(PostBase):
     disabled: Optional[bool] = False
     date: Optional[date]
     author: schemas_users.UserPostDisplay
-    category: schemas_categories.CategoryBase
+    category: schemas_categories.Category
     comments: schemas_comments.CommentUnderPost
 
 

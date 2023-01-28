@@ -27,6 +27,6 @@ class Comment(CommentBase):
     date_of_last_edit: Optional[date]
 
 
-class CommentUnderPost(CommentBase):
+class CommentUnderPost(Comment):
     disabled: Optional[bool] = False
     author: schemas_users.UserPostDisplay
