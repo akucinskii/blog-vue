@@ -11,7 +11,7 @@ def get_categories(db: Session):
     return db.query(models.Category).all()
 
 
-def get_category_by_id(db: Session, category_id: UUID):
+async def get_category_by_id(db: Session, category_id: UUID):
     return db.query(models.Category).filter(models.Category.id == category_id)
 
 
@@ -31,7 +31,7 @@ def create_category(
 
 async def remove_category(db: Session, user: models.User, category_id: UUID):
     if user.is_admin:
-        db_category = get_category_by_id(db=db, category_id=category_id)
+        db_category = await get_category_by_id(db=db, category_id=category_id)
         db.delete(db_category)
         db.commit()
     else:
