@@ -42,10 +42,10 @@ def create_post(db: Session, post: schemas_posts.PostCreate, user: models.User):
         raise crud_auth.privlige_exception
 
 
-def remove_post(db: Session, user: models.User, post_id: UUID):
+async def remove_post(db: Session, user: models.User, post_id: UUID):
     if user.is_admin:
         db_post = get_post_by_id(db=db, post_id=post_id)
         db.delete(db_post)
-        db.commit()
+        await db.commit()
     else:
         raise crud_auth.privlige_exception

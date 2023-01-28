@@ -27,7 +27,7 @@ def create_comment(
     return db_comment
 
 
-def remove_comment(db: Session, comment_id: UUID):
+async def remove_comment(db: Session, comment_id: UUID):
     db_comment = get_comment_by_id(db=db, comment_id=comment_id)
-    db.delete(db_comment)
+    await db.delete(db_comment)
     db.commit()

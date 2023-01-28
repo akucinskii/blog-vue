@@ -19,19 +19,20 @@ def create_category(
     db: Session, category: schemas_categories.CategoryCreate, user: models.User
 ):
     if user.is_admin:
-        db_category = models.Category(name=category.name)
+        db_category = models.Category(
+            name=category.name, disabled=False, date_of_last_edit=date
+        )
         db.add(db_category)
         db.commit()
         db.refresh(db_category)
         return db_category
-    else:
-        raise crud_auth.privlige_exception
+    raise crud_auth.privlige_exception
 
 
-def remove_category(db: Session, user: models.User, category_id: UUID):
+async def remove_category(db: Session, user: models.User, category_id: UUID):
     if user.is_admin:
         db_category = get_category_by_id(db=db, category_id=category_id)
         db.delete(db_category)
-        db.commit()
+        await db.commit()
     else:
         raise crud_auth.privlige_exception
