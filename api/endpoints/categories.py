@@ -28,9 +28,9 @@ def create_category(
 
 
 @router.delete("")
-def remove_category(
+async def remove_category(
     category_id: UUID,
     db: Session = Depends(get_db),
     user: models.User = Depends(crud_auth.get_current_active_user),
 ):
-    return crud_categories.remove_category(db=db, category_id=category_id, user=user)
+    return await crud_categories.remove_category(db=db, category_id=category_id, user=user)
