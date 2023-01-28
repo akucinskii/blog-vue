@@ -29,14 +29,14 @@ class PostShow(PostBase):
 
 class PostsShow(PostBase):
     id: UUID
-    date: Optional(date)
+    date: Optional[date]
     author: schemas_users.UserPostDisplay
     category: schemas_categories.CategoryBase
 
 
 class UserPosts(PostBase):
     id: UUID
-    date: Optional(date)
+    date: Optional[date]
     category: schemas_categories.CategoryBase
 
 
@@ -47,6 +47,6 @@ class PostCreate(PostBase):
 class Post(PostBase):
     id: UUID
     user_id: UUID
-    disabled: Optional(bool) = False
-    date_of_creation: Optional(date)
-    date_of_last_edit: Optional(date)
+    disabled: Optional[bool] = False
+    date_of_creation: Optional[date]
+    date_of_last_edit: Optional[date]

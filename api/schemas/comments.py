@@ -22,9 +22,9 @@ class Comment(CommentBase):
     id: UUID
     user_id: UUID
     post_id: UUID
-    disabled: Optional(bool) = False
-    date_of_creation: Optional(date)
-    date_of_last_edit: Optional(date)
+    disabled: Optional[bool] = False
+    date_of_creation: Optional[date]
+    date_of_last_edit: Optional[date]
 
 
 class CommentUnderPost(CommentBase):

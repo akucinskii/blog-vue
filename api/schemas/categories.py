@@ -18,6 +18,6 @@ class CategoryCreate(CategoryBase):
 
 class Category(CategoryBase):
     id: UUID
-    disabled: Optional(bool) = False
-    date_of_creation: Optional(date)
-    date_of_last_edit: Optional(date)
+    disabled: Optional[bool] = False
+    date_of_creation: Optional[date]
+    date_of_last_edit: Optional[date]
