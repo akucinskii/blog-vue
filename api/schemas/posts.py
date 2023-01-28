@@ -21,7 +21,7 @@ class PostBase(BaseModel):
 
 class PostShow(PostBase):
     id: UUID
-    date: Optional(date)
+    date: Optional[date]
     author: schemas_users.UserPostDisplay
     category: schemas_categories.CategoryBase
     comments: schemas_comments.CommentUnderPost
