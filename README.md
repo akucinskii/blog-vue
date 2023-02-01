@@ -1,6 +1,6 @@
 # Blog 
 
-## Project made by me (frontend) and Kinggred (backend).
+## Project made by me (frontend) and Kinggred (backend) about 6 months ago.
 
 Posts and categories can be added by Admins in their panel, User details can be changed in user tab.
 
